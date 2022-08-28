@@ -5,6 +5,7 @@ var fs = require('fs');
 var cors = require('cors')
 var app = express();
 app.use(cors())
+app.use(express.static('public'));
 const router = express.Router();
 let name, directory;
 
@@ -39,7 +40,7 @@ router.post('/projects/:start', upload.array('uploadedImages', 10), function(req
 });
 
 router.get('/',function(req,res){
-  res.sendFile(path.join(__dirname+'/html/index.html'));
+  
 });
 app.use('/', router);
 
